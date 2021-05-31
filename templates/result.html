@@ -16,8 +16,21 @@
         </tr>
     </thead>
     <tbody>
-
+        {% for tweet in r['tweet'] %}
+        <tr>
+            <td data-label="No">{{ loop.index }}</td>
+            <td data-label="Tweet">{{ tweet['text'] }}</td>
+            <td data-label="Prediction">{{ '%0.5f' % tweet['prediction']|float }}</td>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
+
+<div class="ui animated button" tabindex="0" onclick="javascript:history.go(-1)">
+    <div class="visible content">Back</div>
+    <div class="hidden content">
+      <i class="left arrow icon"></i>
+    </div>
+  </div>
 
 {% endblock %}
