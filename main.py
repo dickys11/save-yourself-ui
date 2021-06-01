@@ -16,4 +16,8 @@ def home():
 @app.route('/result/<username>/<numpage>')
 def result(username, numpage):
     r = requests.get(f'http://34.87.19.67:8888/getstatus/{username}/{numpage}')
-    return render_template('result.html', r=r.json())
+
+    if r.status_code == 200:
+        return render_template('result.html', r=r.json())
+    else:
+        return render_template('error.html', r=r)
